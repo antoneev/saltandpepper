@@ -1,0 +1,25 @@
+function I=snp()
+
+A=imread('Lena_noise.jpg')
+
+[m,n]=size(A);
+
+for i=1:m
+        for j=1:n
+            if(i > 1 && j > 1 && i < m-1 && j < n-1)  
+                p1 = A(i,j);
+                p2 = A(i+1,j); 
+                p3 = A(i,j+1);
+                p4 = A(i-1,j);
+                p5 = A(i,j-1);
+                p6 = A(i+1,j+1);
+                p7 = A(i-1,j-1);
+                p8 = A(i+1,j-1);
+                p9 = A(i-1,j+1);
+                allpoints = [p1,p2,p3,p4,p5,p6,p7,p8,p9];
+                avg = mean(allpoints);
+            end
+        end
+end
+            
+imwrite(A,'antone_output_snp.jpg')
